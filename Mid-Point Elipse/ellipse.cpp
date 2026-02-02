@@ -28,15 +28,11 @@ void drawEllipse(int xc, int yc, int a, int b)
 {
     int x = 0;
     int y = b;
-
     long a2 = a * a;
     long b2 = b * b;
-
     long dx = 2 * b2 * x;
     long dy = 2 * a2 * y;
-
     long p1 = b2 - (a2 * b) + (a2 / 4);
-
     // for reg 1
     while (dx < dy)
     {
@@ -47,7 +43,6 @@ void drawEllipse(int xc, int yc, int a, int b)
 
         x++;
         dx = dx + (2 * b2);
-
         if (p1 < 0)
         {
             p1 = p1 + dx + b2;
@@ -59,7 +54,6 @@ void drawEllipse(int xc, int yc, int a, int b)
             p1 = p1 + dx - dy + b2;
         }
     }
-
     /* Decision parameter for Reg 2 */
     long p2 = (b2 * (x + 0.5) * (x + 0.5)) +
               (a2 * (y - 1) * (y - 1)) -
@@ -95,18 +89,13 @@ int main()
     int xc, yc, a, b;
 
     initgraph(&gd, &gm, (char*)"");
-
     printf("Enter center (xc yc): ");
     scanf("%d %d", &xc, &yc);
-
     printf("Enter major axis (a): ");
     scanf("%d", &a);
-
     printf("Enter minor axis (b): ");
     scanf("%d", &b);
-
     drawEllipse(xc, yc, a, b);
-
     getch();
     closegraph();
     return 0;
